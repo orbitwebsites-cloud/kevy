@@ -15,7 +15,7 @@
  *       hint     small helper text under the input
  * ========================================================================= */
 
-const PHONE = "+15555550123"; // <-- change to the client's real number
+const PHONE = "+17789832593"; // 778-983-2593
 const BUSINESS = "Kevy Exterior Cleaning";
 
 const SERVICES = [
