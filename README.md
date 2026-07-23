@@ -10,21 +10,24 @@ static files (`index.html`, `style.css`, `script.js`).
 
 ## How it works
 
-For each selected service:
+The quote builder is a 3-step flow: **① home size → ② number of storeys →
+③ services**. It then reveals a **price range** per service plus a combined
+total range — the way a real inspection quote is presented:
 
 ```
-price = max(minimum, quantity × rate)   →  rounded to the nearest $5
+range = base range  ×  home-size factor  ×  storey factor
 ```
 
-If the entered quantity is larger than the service's `cap`, the calculator shows
-a **"$X+, contact for exact quote"** starting price instead of a raw number, and
-the "Text me" button still works so the lead isn't lost.
+The storey factor only applies to height-sensitive work (windows, soft wash,
+roof, gutters) — driveways stay at ground level. Everything is rounded to the
+nearest $5. Results say "Estimated range — exact price confirmed at your free
+inspection," and the "Text me" button sends the full breakdown by SMS.
 
 ## Page layout
 
-It's a conversion-style landing page — sky-blue hero, stat band, the live quote
-calculator, a value-comparison card, a "why choose us" trust list, and a badge
-footer — all in a single scroll.
+It's a conversion-style landing page — sky-blue hero, stat band, the 3-step quote
+builder, a value-comparison card, a **Kevy vs. competitors** pros/cons table, and
+a badge footer — all in a single scroll.
 
 > **Placeholder marketing copy:** the headline, the stats (`700+`, `3,000+`,
 > `6+`), the "why choose us" points, and the value-comparison figures live in
@@ -40,39 +43,53 @@ year update themselves from `PHONE` automatically.
 ### 1. Phone number
 
 ```js
-const PHONE = "+15555550123";   // full international format, digits only
+const PHONE = "+17789832593";   // full international format, digits only
 const BUSINESS = "Kevy Exterior Cleaning";
 ```
 
-`PHONE` is the number the **"Text me to lock in this quote"** button opens.
-`BUSINESS` just labels the text message so you know which quote came in.
+`PHONE` drives both the **"Call"** and **"Text me to lock in this quote"**
+buttons. `BUSINESS` labels the text message so you know which quote came in.
 
-### 2. Services & pricing
+### 2. Home size & storey factors
 
-`SERVICES` is a plain array — add, remove, reorder, or re-price rows freely:
+The step 1 & 2 buttons — each just a label plus a multiplier:
+
+```js
+const HOME_SIZES = [
+  { id: "medium", label: "Medium", sub: "1,500–2,500 sq ft", factor: 1.0 },
+  ...
+];
+const STOREYS = [
+  { id: "2", label: "2 Storeys", factor: 1.25 },
+  ...
+];
+```
+
+### 3. Services & pricing
+
+Each service has a `[low, high]` **base range** (for a Medium, single-storey
+home), a tagline, and the "includes" bullets shown on its result card:
 
 ```js
 {
-  id: "windows",             // unique key, no spaces
-  name: "Window Cleaning",   // label shown to the customer
-  unit: "window",            // singular unit name
-  unitPlural: "windows",     // plural unit name
-  rate: 14,                  // price per unit
-  minimum: 249,              // floor price for the job
-  cap: 60,                   // qty above this shows "$X+, contact us"
-  hint: "Count exterior panes you want cleaned.",
+  id: "windows",
+  name: "Window Cleaning",
+  tagline: "Streak-free glass, sparkle guaranteed",
+  base: [180, 260],          // low–high before size/storey factors
+  heightSensitive: true,     // false = skip the storey factor (e.g. driveways)
+  includes: ["Exterior windows, streak-free finish", "Screens wiped down", ...],
 }
 ```
 
-The current pricing:
+Current base ranges (Medium, 1-storey):
 
-| Service | Input | Rate | Minimum | Cap |
-|---|---|---|---|---|
-| Window Cleaning | # of windows | $14 / window | $249 | 60 |
-| Soft Washing (House) | sq ft of exterior | $0.28 / sq ft | $499 | 6000 |
-| Roof Moss Removal | sq ft of roof | $0.35 / sq ft | $599 | 6000 |
-| Gutter Cleaning | linear ft of gutters | $1.75 / linear ft | $249 | 400 |
-| Driveway Pressure Washing | sq ft of driveway | $0.50 / sq ft | $299 | 6000 |
+| Service | Base range | Storey-sensitive |
+|---|---|---|
+| Window Cleaning | $180–260 | yes |
+| Soft Washing (House) | $430–620 | yes |
+| Roof Moss Removal | $480–700 | yes |
+| Gutter Cleaning | $180–260 | yes |
+| Driveway Pressure Washing | $240–360 | no |
 
 Save the file and refresh — no build required.
 

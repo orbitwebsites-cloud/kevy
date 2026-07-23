@@ -38,18 +38,9 @@
 
     <!-- ========================= STATS BAND ========================= -->
     <section class="stats" aria-label="Track record">
-      <div class="stat">
-        <span class="stat__num">700+</span>
-        <span class="stat__label">5-star reviews</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">3,000+</span>
-        <span class="stat__label">homes cleaned</span>
-      </div>
-      <div class="stat">
-        <span class="stat__num">6+</span>
-        <span class="stat__label">years local</span>
-      </div>
+      <div class="stat"><span class="stat__num">700+</span><span class="stat__label">5-star reviews</span></div>
+      <div class="stat"><span class="stat__num">3,000+</span><span class="stat__label">homes cleaned</span></div>
+      <div class="stat"><span class="stat__num">6+</span><span class="stat__label">years local</span></div>
     </section>
 
     <!-- primary CTA -> scroll to calculator -->
@@ -58,34 +49,56 @@
       <p class="ctawrap__note">60 seconds · No credit card · No obligation · No salesperson</p>
     </div>
 
-    <!-- ========================= CALCULATOR CARD ========================= -->
+    <!-- ========================= QUOTE BUILDER ========================= -->
     <section class="panel" id="quote">
       <div class="panel__head">
         <span class="panel__kicker">INSTANT QUOTE</span>
         <h2 class="panel__title">Build your quote</h2>
-        <p class="panel__lead">Tap the services you want, add a couple of numbers, and watch your price appear live.</p>
+        <p class="panel__lead">Tell us about your home, pick your services, and see your estimate instantly.</p>
       </div>
 
-      <div class="services" id="services" aria-label="Available services">
-        <!-- Service rows injected by script.js -->
+      <!-- Step 1 : home size -->
+      <div class="qstep">
+        <p class="qstep__title"><span class="qstep__num">1</span> How big is your home?</p>
+        <div class="choice" id="sizeChoices" role="group" aria-label="Home size"></div>
       </div>
 
-      <div class="summary" id="summary" aria-live="polite">
-        <div class="summary__row">
-          <span class="summary__label">Estimated total</span>
-          <span class="summary__total" id="grandTotal">$0</span>
-        </div>
-        <p class="summary__note" id="summaryNote">Pick a service above to get started.</p>
+      <!-- Step 2 : storeys -->
+      <div class="qstep">
+        <p class="qstep__title"><span class="qstep__num">2</span> How many storeys?</p>
+        <div class="choice" id="storyChoices" role="group" aria-label="Number of storeys"></div>
       </div>
 
-      <button class="btn btn--primary btn--full" id="cta" type="button" disabled>
-        Text me to lock in this quote
+      <!-- Step 3 : services -->
+      <div class="qstep">
+        <p class="qstep__title"><span class="qstep__num">3</span> Which services would you like?</p>
+        <div class="services" id="services" aria-label="Available services"></div>
+      </div>
+
+      <button class="btn btn--primary btn--full" id="estimateBtn" type="button" disabled>
+        See my estimate &rarr;
       </button>
+      <p class="qstep__hint" id="estimateHint">Choose a home size, storeys, and at least one service.</p>
 
-      <p class="panel__fine">
-        Estimates are calculated instantly from the sizes you enter. Final pricing is
-        confirmed on-site. Large jobs show a starting price — we'll dial in the exact number by text.
-      </p>
+      <!-- Results (revealed after "See my estimate") -->
+      <div class="results" id="results" hidden>
+        <div class="results__cards" id="resultCards"></div>
+
+        <div class="results__total" id="resultTotal">
+          <span class="results__badge">&#9733; YOUR ESTIMATE</span>
+          <h3 class="results__name">Your full quote</h3>
+          <p class="results__range" id="grandTotal">$0</p>
+          <p class="results__note">Estimated range. Exact price confirmed at your free inspection.</p>
+        </div>
+
+        <button class="btn btn--primary btn--full" id="cta" type="button">
+          Text me to lock in this quote
+        </button>
+        <p class="panel__fine">
+          Ranges are calculated instantly from your home size, storeys and selected
+          services. Your exact price is confirmed at a free, no-obligation inspection.
+        </p>
+      </div>
     </section>
 
     <!-- ========================= VALUE COMPARISON ========================= -->
@@ -111,17 +124,27 @@
       </p>
     </section>
 
-    <!-- ========================= WHY US ========================= -->
-    <section class="why">
-      <span class="why__kicker">WHY HOMEOWNERS CHOOSE KEVY</span>
-      <ul class="why__list">
-        <li><span class="tick tick--yes">&#10003;</span> Same-week booking</li>
-        <li><span class="tick tick--no">&#10007;</span> 2–3 week waits elsewhere</li>
-        <li><span class="tick tick--yes">&#10003;</span> 700+ five-star reviews</li>
-        <li><span class="tick tick--no">&#10007;</span> Few or fake reviews</li>
-        <li><span class="tick tick--yes">&#10003;</span> Fully insured &amp; guaranteed</li>
-        <li><span class="tick tick--no">&#10007;</span> Often uninsured</li>
-      </ul>
+    <!-- ========================= KEVY vs OTHERS ========================= -->
+    <section class="ctable-wrap">
+      <span class="ctable__kicker">WHY HOMEOWNERS CHOOSE KEVY</span>
+      <table class="ctable">
+        <thead>
+          <tr>
+            <th class="ctable__what">What you get</th>
+            <th class="ctable__us">Kevy</th>
+            <th class="ctable__them">Cheap Competitors</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Cleaning method</td><td class="yes">Pro-grade soft-wash</td><td class="no">Basic pressure blast</td></tr>
+          <tr><td>Siding safety</td><td class="yes">Won't damage paint</td><td class="no">Risks blasting paint</td></tr>
+          <tr><td>Google reviews</td><td class="yes">700+ verified &#9733;</td><td class="no">Few or fake</td></tr>
+          <tr><td>Booking time</td><td class="yes">Same week</td><td class="no">2–3 weeks</td></tr>
+          <tr><td>Team</td><td class="yes">In-house techs</td><td class="no">Subcontractors</td></tr>
+          <tr><td>Insurance</td><td class="yes">Fully insured</td><td class="no">Often none</td></tr>
+          <tr><td>Years local</td><td class="yes">6+ years</td><td class="no">New / unknown</td></tr>
+        </tbody>
+      </table>
     </section>
 
     <!-- final CTA -->
