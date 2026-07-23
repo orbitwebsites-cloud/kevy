@@ -239,10 +239,10 @@ function render() {
     ctaEl.disabled = true;
   } else if (anyCapped) {
     summaryNoteEl.textContent =
-      "One or more jobs are larger than our instant range — text us for an exact quote.";
+      "One or more jobs are larger than our instant range — message us for an exact quote.";
     ctaEl.disabled = false;
   } else {
-    summaryNoteEl.textContent = `Estimate range · ${money(CALLOUT_MIN)} minimum call-out. Text to lock it in.`;
+    summaryNoteEl.textContent = `Estimate range · ${money(CALLOUT_MIN)} minimum call-out. WhatsApp to lock it in.`;
     ctaEl.disabled = false;
   }
 }
@@ -285,7 +285,10 @@ function buildMessage() {
 
 ctaEl.addEventListener("click", () => {
   const body = encodeURIComponent(buildMessage());
-  window.location.href = `sms:${PHONE}?&body=${body}`;
+  // WhatsApp deep link. wa.me needs the number in international format with
+  // no "+", spaces or dashes — we derive it from PHONE automatically.
+  const waNumber = PHONE.replace(/[^0-9]/g, "");
+  window.location.href = `https://wa.me/${waNumber}?text=${body}`;
 });
 
 /* -------------------------------------------------------------------------
