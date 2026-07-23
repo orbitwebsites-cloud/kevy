@@ -239,6 +239,16 @@ ctaEl.addEventListener("click", () => {
 });
 
 /* -------------------------------------------------------------------------
+ *  PAGE CHROME  (call button + footer year, kept in sync with PHONE)
+ * ------------------------------------------------------------------------- */
+
+const callBtn = document.getElementById("callBtn");
+if (callBtn) callBtn.href = `tel:${PHONE}`;
+
+const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+/* -------------------------------------------------------------------------
  *  GO
  * ------------------------------------------------------------------------- */
 

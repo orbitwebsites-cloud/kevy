@@ -20,10 +20,22 @@ If the entered quantity is larger than the service's `cap`, the calculator shows
 a **"$X+, contact for exact quote"** starting price instead of a raw number, and
 the "Text me" button still works so the lead isn't lost.
 
+## Page layout
+
+It's a conversion-style landing page — sky-blue hero, stat band, the live quote
+calculator, a value-comparison card, a "why choose us" trust list, and a badge
+footer — all in a single scroll.
+
+> **Placeholder marketing copy:** the headline, the stats (`700+`, `3,000+`,
+> `6+`), the "why choose us" points, and the value-comparison figures live in
+> [`index.html`](index.html). Replace them with the client's **real** numbers
+> and claims before going live.
+
 ## Editing for a new client
 
-Everything you need is at the **top of [`script.js`](script.js)** — you don't
-need to touch the HTML or CSS.
+The pricing + phone number live at the **top of [`script.js`](script.js)**; the
+marketing copy lives in [`index.html`](index.html). The "Call" button and footer
+year update themselves from `PHONE` automatically.
 
 ### 1. Phone number
 

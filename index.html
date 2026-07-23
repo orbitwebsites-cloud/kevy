@@ -3,45 +3,144 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Instant online quote for window cleaning, soft washing, roof moss removal, gutter cleaning and pressure washing. Pick your services and lock in your price in seconds." />
-  <title>Instant Quote — Exterior Cleaning</title>
+  <meta name="description" content="Kevy Exterior Cleaning — professional window cleaning, soft washing, roof, gutters and pressure washing. Get your custom quote in 60 seconds." />
+  <title>Kevy Exterior Cleaning — Free 60-Second Quote</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <main class="card" role="main">
-    <header class="card__head">
-      <span class="badge">
-        <span class="badge__dot"></span>
-        Free instant quote
-      </span>
-      <h1 class="card__title">Build your<br />cleaning quote</h1>
-      <p class="card__sub">Select your services, drop in a couple of numbers, and watch your price appear. No calls, no waiting.</p>
-    </header>
 
-    <section class="services" id="services" aria-label="Available services">
-      <!-- Service rows injected by script.js -->
+  <!-- ========================= TOP BAR ========================= -->
+  <header class="topbar">
+    <a class="brand" href="#top">
+      <span class="brand__name">KEVY</span>
+      <span class="brand__tag">EXTERIOR CLEANING</span>
+    </a>
+    <a class="callbtn" id="callBtn" href="tel:+15555550123">
+      <span class="callbtn__icon" aria-hidden="true">&#9742;</span>
+      Call
+    </a>
+  </header>
+
+  <main id="top">
+
+    <!-- ========================= HERO ========================= -->
+    <section class="hero">
+      <p class="hero__eyebrow">YOUR AREA'S MOST-REVIEWED EXTERIOR CLEANER</p>
+      <h1 class="hero__title">Make Your Home<br />Look Brand New —<br />In 60 Seconds.</h1>
+      <p class="hero__sub">
+        Professional window cleaning, soft washing &amp; gutters. No ladders, no
+        weekends lost to scrubbing. Get your custom quote instantly — no call required.
+      </p>
     </section>
 
-    <section class="summary" id="summary" aria-live="polite">
-      <div class="summary__row">
-        <span class="summary__label">Estimated total</span>
-        <span class="summary__total" id="grandTotal">$0</span>
+    <!-- ========================= STATS BAND ========================= -->
+    <section class="stats" aria-label="Track record">
+      <div class="stat">
+        <span class="stat__num">700+</span>
+        <span class="stat__label">5-star reviews</span>
       </div>
-      <p class="summary__note" id="summaryNote">Pick a service above to get started.</p>
+      <div class="stat">
+        <span class="stat__num">3,000+</span>
+        <span class="stat__label">homes cleaned</span>
+      </div>
+      <div class="stat">
+        <span class="stat__num">6+</span>
+        <span class="stat__label">years local</span>
+      </div>
     </section>
 
-    <button class="cta" id="cta" type="button" disabled>
-      Text me to lock in this quote
-    </button>
+    <!-- primary CTA -> scroll to calculator -->
+    <div class="ctawrap">
+      <a class="btn btn--primary" href="#quote">Get My Free 60-Second Quote &rarr;</a>
+      <p class="ctawrap__note">60 seconds · No credit card · No obligation · No salesperson</p>
+    </div>
 
-    <p class="fineprint">
-      Estimates are calculated instantly from the sizes you enter. Final pricing is
-      confirmed on-site. Large jobs show a starting price — we'll dial in the exact number by text.
-    </p>
+    <!-- ========================= CALCULATOR CARD ========================= -->
+    <section class="panel" id="quote">
+      <div class="panel__head">
+        <span class="panel__kicker">INSTANT QUOTE</span>
+        <h2 class="panel__title">Build your quote</h2>
+        <p class="panel__lead">Tap the services you want, add a couple of numbers, and watch your price appear live.</p>
+      </div>
+
+      <div class="services" id="services" aria-label="Available services">
+        <!-- Service rows injected by script.js -->
+      </div>
+
+      <div class="summary" id="summary" aria-live="polite">
+        <div class="summary__row">
+          <span class="summary__label">Estimated total</span>
+          <span class="summary__total" id="grandTotal">$0</span>
+        </div>
+        <p class="summary__note" id="summaryNote">Pick a service above to get started.</p>
+      </div>
+
+      <button class="btn btn--primary btn--full" id="cta" type="button" disabled>
+        Text me to lock in this quote
+      </button>
+
+      <p class="panel__fine">
+        Estimates are calculated instantly from the sizes you enter. Final pricing is
+        confirmed on-site. Large jobs show a starting price — we'll dial in the exact number by text.
+      </p>
+    </section>
+
+    <!-- ========================= VALUE COMPARISON ========================= -->
+    <section class="compare">
+      <span class="compare__kicker">THE MATH MOST HOMEOWNERS MISS</span>
+      <div class="compare__grid">
+        <div class="compare__cell compare__cell--cost">
+          <span class="compare__cap">YOUR HOME VALUE</span>
+          <span class="compare__big">$500,000+</span>
+          <span class="compare__note">Typical local home</span>
+        </div>
+        <span class="compare__vs">vs.</span>
+        <div class="compare__cell compare__cell--value">
+          <span class="compare__cap">FULL EXTERIOR CLEAN</span>
+          <span class="compare__big">~$900</span>
+          <span class="compare__note">Windows + soft wash + gutters</span>
+        </div>
+      </div>
+      <p class="compare__body">
+        For under <b>0.2% of your home's value</b>, you bring back the curb appeal of a
+        brand-new build. Listing your home? A clean exterior typically adds
+        <b>$5,000–$15,000</b> to offer prices — it pays for itself many times over.
+      </p>
+    </section>
+
+    <!-- ========================= WHY US ========================= -->
+    <section class="why">
+      <span class="why__kicker">WHY HOMEOWNERS CHOOSE KEVY</span>
+      <ul class="why__list">
+        <li><span class="tick tick--yes">&#10003;</span> Same-week booking</li>
+        <li><span class="tick tick--no">&#10007;</span> 2–3 week waits elsewhere</li>
+        <li><span class="tick tick--yes">&#10003;</span> 700+ five-star reviews</li>
+        <li><span class="tick tick--no">&#10007;</span> Few or fake reviews</li>
+        <li><span class="tick tick--yes">&#10003;</span> Fully insured &amp; guaranteed</li>
+        <li><span class="tick tick--no">&#10007;</span> Often uninsured</li>
+      </ul>
+    </section>
+
+    <!-- final CTA -->
+    <div class="ctawrap ctawrap--last">
+      <a class="btn btn--primary" href="#quote">Start My Free Quote &rarr;</a>
+      <p class="ctawrap__note">60 seconds · No credit card · No obligation · No salesperson</p>
+    </div>
+
   </main>
+
+  <!-- ========================= FOOTER ========================= -->
+  <footer class="foot">
+    <div class="foot__badges">
+      <span class="pill">&#9733; 700+ Reviews</span>
+      <span class="pill">Fully Insured</span>
+      <span class="pill">Satisfaction Guarantee</span>
+    </div>
+    <p class="foot__copy">© <span id="year"></span> Kevy Exterior Cleaning</p>
+  </footer>
 
   <script src="script.js"></script>
 </body>
