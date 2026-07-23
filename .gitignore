@@ -1,0 +1,19 @@
+# Vercel
+.vercel
+
+# Dependencies
+node_modules/
+
+# macOS
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Editor / OS cruft
+.idea/
+.vscode/
+Thumbs.db

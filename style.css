@@ -1,0 +1,344 @@
+/* =========================================================================
+ *  Instant Quote — exterior cleaning
+ *  Palette: deep tide (ink) + bright aqua/spray + clean glass white.
+ *  Water & glass feeling, premium, mobile-first single card.
+ * ========================================================================= */
+
+:root {
+  --ink: #0b2a3a;           /* deep tide navy */
+  --ink-soft: #3a5c6e;      /* muted slate-teal for secondary text */
+  --spray: #0aa2c0;         /* bright water aqua */
+  --spray-deep: #067a91;    /* pressed / hover aqua */
+  --mint: #d7f2f5;          /* pale spray tint */
+  --glass: #ffffff;
+  --line: #e4edf0;          /* hairline dividers */
+  --field: #f3f8fa;         /* input surface */
+  --shadow: 0 24px 60px -24px rgba(6, 43, 58, 0.45);
+  --radius: 20px;
+  --font-display: "Sora", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-body);
+  color: var(--ink);
+  background:
+    radial-gradient(1200px 700px at 15% -10%, #bfeef3 0%, rgba(191, 238, 243, 0) 55%),
+    radial-gradient(1000px 800px at 110% 10%, #cfe3ee 0%, rgba(207, 227, 238, 0) 50%),
+    linear-gradient(180deg, #eaf6f8 0%, #dcecf1 100%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 28px 18px 56px;
+}
+
+/* ---------------------------------------------------------------- card */
+
+.card {
+  width: 100%;
+  max-width: 460px;
+  background: var(--glass);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 28px 22px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+}
+
+.card__head {
+  margin-bottom: 22px;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--spray-deep);
+  background: var(--mint);
+  padding: 6px 12px;
+  border-radius: 999px;
+}
+
+.badge__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--spray);
+  box-shadow: 0 0 0 4px rgba(10, 162, 192, 0.18);
+}
+
+.card__title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 8vw, 2.55rem);
+  line-height: 1.03;
+  letter-spacing: -0.02em;
+  margin: 16px 0 12px;
+  color: var(--ink);
+}
+
+.card__sub {
+  color: var(--ink-soft);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  max-width: 38ch;
+}
+
+/* ---------------------------------------------------------------- services */
+
+.services {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.service {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.service.is-selected {
+  border-color: var(--spray);
+  box-shadow: 0 0 0 3px rgba(10, 162, 192, 0.12);
+}
+
+.service__toggle {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 16px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+}
+
+.service__check {
+  flex: 0 0 auto;
+  width: 22px;
+  height: 22px;
+  border-radius: 7px;
+  border: 2px solid #c4d5dc;
+  position: relative;
+  transition: background 0.18s ease, border-color 0.18s ease;
+}
+
+.is-selected .service__check {
+  background: var(--spray);
+  border-color: var(--spray);
+}
+
+.is-selected .service__check::after {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 2px;
+  width: 6px;
+  height: 11px;
+  border: solid #fff;
+  border-width: 0 2.5px 2.5px 0;
+  transform: rotate(45deg);
+}
+
+.service__meta {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  min-width: 0;
+}
+
+.service__name {
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.service__rate {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+}
+
+.service__price {
+  flex: 0 0 auto;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.02rem;
+  color: var(--spray-deep);
+  min-width: 44px;
+  text-align: right;
+}
+
+.service__price.is-capped {
+  font-size: 0.92rem;
+}
+
+/* input panel */
+
+.service__panel {
+  padding: 4px 16px 16px 52px;
+  animation: slideIn 0.2s ease;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field__label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.field__input {
+  width: 100%;
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  background: var(--field);
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.field__input:focus {
+  outline: none;
+  border-color: var(--spray);
+  background: #fff;
+}
+
+/* hide number spinners for a cleaner look */
+.field__input::-webkit-outer-spin-button,
+.field__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.field__input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.field__hint {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 8px;
+}
+
+/* ---------------------------------------------------------------- summary */
+
+.summary {
+  margin: 20px 0 16px;
+  padding: 18px 18px 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, var(--ink) 0%, #123a4e 100%);
+  color: #fff;
+}
+
+.summary__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.summary__label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.summary__total {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 2.1rem;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+  color: #eafcff;
+}
+
+.summary__note {
+  margin-top: 8px;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------------------------------------------------------------- cta */
+
+.cta {
+  width: 100%;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.01em;
+  color: #fff;
+  background: linear-gradient(135deg, var(--spray) 0%, var(--spray-deep) 100%);
+  border: 0;
+  border-radius: 14px;
+  padding: 16px 18px;
+  cursor: pointer;
+  box-shadow: 0 14px 26px -12px rgba(10, 162, 192, 0.7);
+  transition: transform 0.14s ease, box-shadow 0.14s ease, opacity 0.14s ease;
+}
+
+.cta:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 30px -12px rgba(10, 162, 192, 0.8);
+}
+
+.cta:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.cta:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.fineprint {
+  margin-top: 14px;
+  font-size: 0.74rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------- responsive */
+
+@media (max-width: 380px) {
+  .card { padding: 22px 16px 20px; }
+  .service__panel { padding-left: 44px; }
+}

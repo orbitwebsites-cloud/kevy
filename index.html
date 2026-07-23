@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Instant online quote for pressure washing, car washes and trash can cleaning. Pick your services and get your price in seconds." />
+  <title>Instant Wash Quote</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="card" role="main">
+    <header class="card__head">
+      <span class="badge">
+        <span class="badge__dot"></span>
+        Free instant quote
+      </span>
+      <h1 class="card__title">Get your<br />wash quote</h1>
+      <p class="card__sub">Pick the services you want, enter the amounts, and see your price appear live. No calls, no waiting.</p>
+    </header>
+
+    <section class="services" id="services" aria-label="Available services">
+      <!-- Service rows injected by script.js -->
+    </section>
+
+    <section class="summary" id="summary" aria-live="polite">
+      <div class="summary__row">
+        <span class="summary__label">Estimated total</span>
+        <span class="summary__total" id="grandTotal">$0</span>
+      </div>
+      <p class="summary__note" id="summaryNote">Pick a service above to get started.</p>
+    </section>
+
+    <button class="cta" id="cta" type="button" disabled>
+      Text me to lock in this quote
+    </button>
+
+    <p class="fineprint">
+      Prices are calculated instantly from the amounts you enter. Large jobs show a
+      starting price — we'll confirm the exact number by text.
+    </p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
